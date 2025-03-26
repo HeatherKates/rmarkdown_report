@@ -1,12 +1,21 @@
 FROM rocker/r-ver:4.3.2
 
-# Install base packages from CRAN (except downloadthis)
+# Install core system packages
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    pandoc \
+    libhdf5-dev \
+    libpng-dev \
+    libfontconfig1-dev \
+    git \
+    wget
+
+# Install CRAN packages
 RUN install2.r --error \
-    AnnotationDbi \
     base64enc \
-    Biobase \
     car \
-    clusterProfiler \
     data.table \
     dplyr \
     DT \
@@ -14,22 +23,17 @@ RUN install2.r --error \
     ggfortify \
     ggplot2 \
     ggrepel \
-    grid \
     gridExtra \
     gtable \
     heatmaply \
-    Homo.sapiens \
     htmltools \
     hues \
     jsonlite \
     kableExtra \
     knitr \
     limma \
-    NOISeq \
     openxlsx \
     optparse \
-    org.Hs.eg.db \
-    org.Mm.eg.db \
     pheatmap \
     plotly \
     png \
@@ -43,10 +47,9 @@ RUN install2.r --error \
     tidyverse \
     yaml
 
-# Add Bioconductor packages (some may be redundant, but this is safe)
-RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org'); \
-          BiocManager::install(c('AnnotationDbi', 'Biobase', 'clusterProfiler', \
-          'Homo.sapiens', 'NOISeq', 'org.Hs.eg.db', 'org.Mm.eg.db'))"
+# Install Bioconductor packages
+RUN Rscript -e "if (!requireNamespace('BiocManager', quietly=TRUE)) install.packages('BiocManager', repos='https://cloud.r-project.org'); \
+                BiocManager::install(c('AnnotationDbi','Biobase','clusterProfiler','Homo.sapiens','NOISeq','org.Hs.eg.db','org.Mm.eg.db'))"
 
 # Create R site-library directory
 RUN mkdir -p /usr/local/lib/R/site-library
