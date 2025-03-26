@@ -45,18 +45,13 @@ RUN install2.r --error \
     tidyverse \
     yaml
 
-# Install Bioconductor packages
-RUN install2.r --error --deps TRUE \
-    --repos https://bioconductor.org/packages/3.17/bioc \
-    AnnotationDbi \
-    Biobase \
-    clusterProfiler \
-    edgeR \
-    limma \
-    Homo.sapiens \
-    NOISeq \
-    org.Hs.eg.db \
-    org.Mm.eg.db
+# Install Bioconductor package
+
+RUN Rscript -e "if (!requireNamespace('BiocManager', quietly=TRUE)) install.packages('BiocManager', repos='https://cloud.r-project.org'); \
+  BiocManager::install(c( \
+    'AnnotationDbi', 'Biobase', 'clusterProfiler', 'edgeR', 'limma', \
+    'Homo.sapiens', 'NOISeq', 'org.Hs.eg.db', 'org.Mm.eg.db'))"
+
 
 # Create R site-library directory
 RUN mkdir -p /usr/local/lib/R/site-library
