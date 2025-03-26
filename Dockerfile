@@ -1,4 +1,4 @@
-FROM rocker/rstudio:4.3.2
+FROM bioconductor/bioconductor_docker:RELEASE_3_17
 
 # Install core system packages
 RUN apt-get update && apt-get install -y \
