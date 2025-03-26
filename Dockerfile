@@ -46,7 +46,8 @@ RUN install2.r --error \
     yaml
 
 # Install Bioconductor packages
-RUN install2.r --error --repos https://bioconductor.org/packages/3.17/bioc \
+RUN install2.r --error --deps TRUE \
+    --repos https://bioconductor.org/packages/3.17/bioc \
     AnnotationDbi \
     Biobase \
     clusterProfiler \
