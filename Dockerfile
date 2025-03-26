@@ -19,7 +19,6 @@ RUN install2.r --error \
     data.table \
     dplyr \
     DT \
-    edgeR \
     ggfortify \
     ggplot2 \
     ggrepel \
@@ -31,7 +30,6 @@ RUN install2.r --error \
     jsonlite \
     kableExtra \
     knitr \
-    limma \
     openxlsx \
     optparse \
     pheatmap \
@@ -49,7 +47,7 @@ RUN install2.r --error \
 
 # Install Bioconductor packages
 RUN Rscript -e "if (!requireNamespace('BiocManager', quietly=TRUE)) install.packages('BiocManager', repos='https://cloud.r-project.org'); \
-                BiocManager::install(c('AnnotationDbi','Biobase','clusterProfiler','Homo.sapiens','NOISeq','org.Hs.eg.db','org.Mm.eg.db'))"
+                BiocManager::install(c('AnnotationDbi','Biobase','clusterProfiler','edgeR', 'limma','Homo.sapiens','NOISeq','org.Hs.eg.db','org.Mm.eg.db'))"
 
 # Create R site-library directory
 RUN mkdir -p /usr/local/lib/R/site-library
