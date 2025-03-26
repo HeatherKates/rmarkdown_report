@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.3.2
+FROM rocker/rstudio:4.3.2
 
 # Install core system packages
 RUN apt-get update && apt-get install -y \
