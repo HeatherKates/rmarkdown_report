@@ -21,7 +21,8 @@ This creates a Docker image named rmarkdown_report.
 ## 2. Save and Compress the Docker Image
 Export the Docker image to a .tar.gz file:
 
-docker save rmarkdown_report | gzip > rmarkdown_report.tar.gz
+```docker save rmarkdown_report | gzip > rmarkdown_report.tar.gz```
+
 ## 3. Transfer to Remote Server via SCP
 Replace user@remote:/path/to/destination with your actual remote server info:
 
