@@ -31,7 +31,8 @@ Replace user@remote:/path/to/destination with your actual remote server info:
 ## 4. Load and Convert to .sif on Remote Server
 SSH into the remote server:
 
-ssh user@remote
+```ssh user@remote```
+
 Then:
 
 a. Decompress the Docker image from the archive
