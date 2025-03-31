@@ -41,7 +41,7 @@ a. Decompress the Docker image from the archive
 
 b. Convert to Singularity (.sif) using Apptainer
 
-```apptainer build my_rmarkdown_report.sif rmarkdown_report.tar```
+```apptainer build my_rmarkdown_report.sif docker-archive://rmarkdown_report.tar```
 
 ## Done!
 You now have a .sif container ready to use with Singularity or Apptainer.
