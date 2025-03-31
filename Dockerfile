@@ -44,7 +44,8 @@ RUN install2.r --error \
     tibble \
     tidyr \
     tidyverse \
-    yaml
+    yaml \
+    downloadthis \
 
 # Install Bioconductor packages with dependencies
 RUN Rscript -e "if (!requireNamespace('BiocManager', quietly=TRUE)) \
@@ -58,7 +59,7 @@ RUN Rscript -e "if (!requireNamespace('BiocManager', quietly=TRUE)) \
 RUN mkdir -p /usr/local/lib/R/site-library
 
 # Copy manually installed 'downloadthis' package into the image
-COPY downloadthis /usr/local/lib/R/site-library/downloadthis
+# COPY downloadthis /usr/local/lib/R/site-library/downloadthis
 
 # Ensure R recognizes the site-library path
 ENV R_LIBS_SITE=/usr/local/lib/R/site-library
