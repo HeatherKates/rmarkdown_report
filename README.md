@@ -33,13 +33,13 @@ SSH into the remote server:
 ssh user@remote
 Then:
 
-a. Load the Docker image from the archive
+a. Decompress the Docker image from the archive
 
-```gunzip -c rmarkdown_report.tar.gz | docker load```
+```gunzip -c rmarkdown_report.tar.gz```
 
 b. Convert to Singularity (.sif) using Apptainer
 
-```apptainer build rmarkdown_report.sif docker-daemon://rmarkdown_report:latest```
+```apptainer build rmarkdown_report.sif rmarkdown_report.tar```
 
 ## Done!
 You now have a .sif container ready to use with Singularity or Apptainer.
