@@ -45,7 +45,7 @@ RUN install2.r --error \
     tidyr \
     tidyverse \
     yaml \
-    downloadthis \
+    downloadthis 
 
 # Install Bioconductor packages with dependencies
 RUN Rscript -e "if (!requireNamespace('BiocManager', quietly=TRUE)) \
