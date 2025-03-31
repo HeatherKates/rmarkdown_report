@@ -37,7 +37,7 @@ Then:
 
 a. Decompress the Docker image from the archive
 
-```gunzip -c rmarkdown_report.tar.gz```
+```gunzip -c rmarkdown_report.tar.gz > rmarkdown_report.tar```
 
 b. Convert to Singularity (.sif) using Apptainer
 
